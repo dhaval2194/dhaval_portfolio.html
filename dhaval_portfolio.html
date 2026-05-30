@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhaval Patel – QA Engineer & Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #18181f;
+    --card: #14141c;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #f0eff5;
+    --muted: #8886a0;
+    --accent: #7c6aff;
+    --accent2: #b8a9ff;
+    --green: #3fffa2;
+    --amber: #ffb84d;
+    --pink: #ff6b9d;
+    --teal: #3fe8d4;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.5rem 1.25rem;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent2);
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--accent); color: #fff; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,106,255,0.15) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-glow2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(63,255,162,0.08) 0%, transparent 70%);
+    bottom: 0; left: 10%;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--green);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name .accent { color: var(--accent); }
+
+  .hero-role {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-role .highlight {
+    color: var(--accent2);
+    font-style: italic;
+  }
+
+  .hero-bio {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.85rem 2rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 30px rgba(124,106,255,0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba(124,106,255,0.5);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.85rem 2rem;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--accent); background: rgba(124,106,255,0.05); }
+
+  /* STATS CARD */
+  .stats-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stats-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--teal), var(--green));
+  }
+
+  .stats-avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--teal));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .stats-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .stats-title {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent2);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-item { text-align: center; }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-num.green { color: var(--green); }
+  .stat-num.amber { color: var(--amber); }
+  .stat-num.teal { color: var(--teal); }
+
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .stats-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 1rem 0;
+  }
+
+  .stats-contact { display: flex; flex-direction: column; gap: 0.6rem; }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .contact-item svg { flex-shrink: 0; }
+
+  .contact-item a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .contact-item a:hover { color: var(--accent2); }
+
+  /* SECTION */
+  section {
+    padding: 6rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 3rem;
+    line-height: 1.1;
+  }
+
+  .section-title .dim { color: var(--muted); }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .skill-group {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: border-color 0.3s;
+  }
+
+  .skill-group:hover { border-color: var(--border2); }
+
+  .skill-group-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sg-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .skill-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: rgba(255,255,255,0.02);
+    transition: all 0.2s;
+  }
+
+  .skill-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent2);
+    background: rgba(124,106,255,0.08);
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .proj-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .proj-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border2);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .proj-card.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .proj-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .proj-card:hover::after { opacity: 1; }
+  .proj-card.c-purple::after { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .proj-card.c-green::after { background: linear-gradient(90deg, var(--green), var(--teal)); }
+  .proj-card.c-amber::after { background: linear-gradient(90deg, var(--amber), var(--pink)); }
+  .proj-card.c-teal::after { background: linear-gradient(90deg, var(--teal), var(--green)); }
+  .proj-card.c-pink::after { background: linear-gradient(90deg, var(--pink), var(--amber)); }
+
+  .proj-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    width: fit-content;
+  }
+
+  .pb-purple { background: rgba(124,106,255,0.12); color: var(--accent2); border: 1px solid rgba(124,106,255,0.2); }
+  .pb-green { background: rgba(63,255,162,0.08); color: var(--green); border: 1px solid rgba(63,255,162,0.2); }
+  .pb-amber { background: rgba(255,184,77,0.08); color: var(--amber); border: 1px solid rgba(255,184,77,0.2); }
+  .pb-teal { background: rgba(63,232,212,0.08); color: var(--teal); border: 1px solid rgba(63,232,212,0.2); }
+  .pb-pink { background: rgba(255,107,157,0.08); color: var(--pink); border: 1px solid rgba(255,107,157,0.2); }
+
+  .proj-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .proj-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    flex: 1;
+  }
+
+  .proj-metrics {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .metric-val {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1;
+  }
+
+  .metric-key {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.25rem; }
+
+  .proj-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  .proj-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+    margin-top: auto;
+  }
+
+  .proj-link:hover { color: var(--accent2); }
+
+  .proj-links { display: flex; gap: 1rem; }
+
+  /* EDUCATION */
+  .edu-grid { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .edu-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    transition: border-color 0.3s;
+  }
+
+  .edu-card:hover { border-color: var(--border2); }
+
+  .edu-icon {
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    background: rgba(124,106,255,0.1);
+    border: 1px solid rgba(124,106,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.3rem;
+  }
+
+  .edu-degree {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .edu-school {
+    font-size: 0.85rem;
+    color: var(--accent2);
+    margin-bottom: 0.2rem;
+  }
+
+  .edu-period {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* CERTIFICATIONS */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .cert-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: border-color 0.3s, transform 0.2s;
+  }
+
+  .cert-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+
+  .cert-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .cert-name {
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+  }
+
+  .cert-org {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent2);
+    letter-spacing: 0.05em;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem;
+    text-align: center;
+    background: var(--bg2);
+  }
+
+  .footer-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-sub {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-links { display: flex; justify-content: center; gap: 2rem; }
+
+  .footer-links a {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent2); }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .stats-card { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .proj-card.featured { grid-column: auto; grid-template-columns: 1fr; }
+    footer { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">dp<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+  </ul>
+  <a href="mailto:dhavalkpatel001@gmail.com" class="nav-cta">Hire me →</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Available for opportunities</div>
+      <h1 class="hero-name">Dhaval<br><span class="accent">Patel</span></h1>
+      <p class="hero-role">QA Engineer &amp; <span class="highlight">Full-Stack Dev</span></p>
+      <p class="hero-bio">MSc Computer Science student at the University of East London with hands-on expertise in test automation, REST API validation, and machine learning. Building robust software and finding the bugs that matter.</p>
+      <div class="hero-btns">
+        <a href="https://linkedin.com/in/dhaval-patel-70778a3a9" target="_blank" class="btn-primary">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/dhaval2194" target="_blank" class="btn-outline">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="stats-card fade-up">
+      <div class="stats-avatar">DP</div>
+      <div class="stats-name">Dhaval Patel</div>
+      <div class="stats-title">QA ENGINEER · MSC CS STUDENT</div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">88%</div>
+          <div class="stat-label">ML Accuracy</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num green">40+</div>
+          <div class="stat-label">Test Cases</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num amber">5</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num teal">4</div>
+          <div class="stat-label">Certs</div>
+        </div>
+      </div>
+      <div class="stats-divider"></div>
+      <div class="stats-contact">
+        <div class="contact-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          <a href="mailto:dhavalkpatel001@gmail.com">dhavalkpatel001@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+          <span>+44 79 0136 8325</span>
+        </div>
+        <div class="contact-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+          <span>United Kingdom</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// expertise</div>
+  <h2 class="section-title">Technical <span class="dim">Skills</span></h2>
+  <div class="skills-grid">
+    <div class="skill-group fade-up">
+      <div class="skill-group-title">
+        <span class="sg-dot" style="background:var(--accent)"></span>
+        <span style="color:var(--accent2)">Automation & Testing</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Selenium WebDriver</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">Manual Testing</span>
+        <span class="skill-tag">Functional Testing</span>
+        <span class="skill-tag">Regression Testing</span>
+        <span class="skill-tag">Smoke Testing</span>
+        <span class="skill-tag">Sanity Testing</span>
+      </div>
+    </div>
+    <div class="skill-group fade-up">
+      <div class="skill-group-title">
+        <span class="sg-dot" style="background:var(--green)"></span>
+        <span style="color:var(--green)">API & Databases</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">REST API Testing</span>
+        <span class="skill-tag">Postman</span>
+        <span class="skill-tag">JSON Validation</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">CRUD Operations</span>
+      </div>
+    </div>
+    <div class="skill-group fade-up">
+      <div class="skill-group-title">
+        <span class="sg-dot" style="background:var(--amber)"></span>
+        <span style="color:var(--amber)">Tools & Management</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Jira</span>
+        <span class="skill-tag">Mantis</span>
+        <span class="skill-tag">TestRail</span>
+        <span class="skill-tag">TestLink</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">Agile / Scrum</span>
+      </div>
+    </div>
+    <div class="skill-group fade-up">
+      <div class="skill-group-title">
+        <span class="sg-dot" style="background:var(--teal)"></span>
+        <span style="color:var(--teal)">Web Technologies</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Spring Boot</span>
+        <span class="skill-tag">Angular</span>
+        <span class="skill-tag">XPath</span>
+        <span class="skill-tag">CSS Selectors</span>
+        <span class="skill-tag">HTML</span>
+        <span class="skill-tag">Hibernate ORM</span>
+      </div>
+    </div>
+    <div class="skill-group fade-up">
+      <div class="skill-group-title">
+        <span class="sg-dot" style="background:var(--pink)"></span>
+        <span style="color:var(--pink)">Data & AI</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Scikit-learn</span>
+        <span class="skill-tag">Random Forest</span>
+        <span class="skill-tag">Flask</span>
+        <span class="skill-tag">Pandas</span>
+        <span class="skill-tag">NumPy</span>
+        <span class="skill-tag">Matplotlib</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="max-width:1100px;margin:0 auto;padding:0 3rem 6rem;">
+  <div class="section-label">// work</div>
+  <h2 class="section-title">Featured <span class="dim">Projects</span></h2>
+  <div class="projects-grid">
+
+    <!-- FEATURED -->
+    <div class="proj-card featured c-purple fade-up">
+      <div>
+        <div class="proj-badge pb-purple">⭐ MSc Thesis</div>
+        <h3 class="proj-title">AI-Powered Climate Health Risk Prediction System</h3>
+        <p class="proj-desc">End-to-end ML system predicting risk across 21 climate-sensitive diseases using real-world NOAA/WHO data across 20+ cities. Built with Random Forest Regressor and deployed via a Flask web app with real-time prediction UI showing forecasts, symptoms, and preventive advice.</p>
+        <div class="proj-metrics">
+          <div class="metric">
+            <span class="metric-val">88.28%</span>
+            <span class="metric-key">R² Score</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val" style="color:var(--teal)">3.08</span>
+            <span class="metric-key">MAE</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val" style="color:var(--amber)">21</span>
+            <span class="metric-key">Diseases</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val" style="color:var(--pink)">20+</span>
+            <span class="metric-key">Cities</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">Random Forest</span>
+          <span class="proj-tag">Scikit-learn</span>
+          <span class="proj-tag">Flask</span>
+          <span class="proj-tag">Pandas</span>
+          <span class="proj-tag">NumPy</span>
+          <span class="proj-tag">NOAA Data</span>
+          <span class="proj-tag">WHO/CDC Data</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/dhaval2194/climate-health-risk-predictor" target="_blank" class="proj-link">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPORTS -->
+    <div class="proj-card c-teal fade-up">
+      <div class="proj-badge pb-teal">Full-Stack</div>
+      <h3 class="proj-title">Sports Events Management System</h3>
+      <p class="proj-desc">Full-stack CRUD app managing matches, teams, stadiums, divisions, and cities. Java + Spring Boot backend with Hibernate ORM, MySQL database, and Angular frontend. Implements MVC, DTO, and Dependency Injection patterns.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Java</span>
+        <span class="proj-tag">Spring Boot</span>
+        <span class="proj-tag">Angular</span>
+        <span class="proj-tag">MySQL</span>
+        <span class="proj-tag">REST API</span>
+        <span class="proj-tag">Hibernate</span>
+      </div>
+      <a href="https://github.com/dhaval2194/sports-Events-system-master" target="_blank" class="proj-link">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <!-- OrangeHRM -->
+    <div class="proj-card c-amber fade-up">
+      <div class="proj-badge pb-amber">QA Testing</div>
+      <h3 class="proj-title">Web App Testing – OrangeHRM</h3>
+      <p class="proj-desc">Designed and executed 40+ test cases for HR modules with 100% functional coverage. Full regression and functional testing cycle using Mantis for defect tracking and TestLink for test management.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Selenium WebDriver</span>
+        <span class="proj-tag">Java</span>
+        <span class="proj-tag">Mantis</span>
+        <span class="proj-tag">TestLink</span>
+        <span class="proj-tag">Regression</span>
+      </div>
+      <a href="https://github.com/dhaval2194/orangehrm-selenium-testing" target="_blank" class="proj-link">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <!-- E-Commerce -->
+    <div class="proj-card c-green fade-up">
+      <div class="proj-badge pb-green">E2E Testing</div>
+      <h3 class="proj-title">E-Commerce Platform Testing</h3>
+      <p class="proj-desc">End-to-end Selenium test automation covering registration, cart, and checkout flows. Advanced XPath and CSS Selectors for robust element targeting. Full defect lifecycle management in Jira.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Selenium WebDriver</span>
+        <span class="proj-tag">Java</span>
+        <span class="proj-tag">Jira</span>
+        <span class="proj-tag">XPath</span>
+        <span class="proj-tag">E2E Testing</span>
+      </div>
+      <a href="https://github.com/dhaval2194/ecommerce-selenium-testing" target="_blank" class="proj-link">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <!-- API Testing -->
+    <div class="proj-card c-pink fade-up">
+      <div class="proj-badge pb-pink">API Testing</div>
+      <h3 class="proj-title">API Testing & Automation</h3>
+      <p class="proj-desc">Postman API validation covering HTTP status codes, JSON payloads, and schema accuracy. Selenium WebDriver automation scripts using advanced XPath and CSS Selectors to reduce manual regression effort.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Postman</span>
+        <span class="proj-tag">REST API</span>
+        <span class="proj-tag">JSON</span>
+        <span class="proj-tag">Selenium</span>
+        <span class="proj-tag">Java</span>
+      </div>
+      <a href="https://github.com/dhaval2194/api-testing-postman-selenium" target="_blank" class="proj-link">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">// background</div>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card fade-up">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree">MSc Computer Science</div>
+        <div class="edu-school">University of East London, United Kingdom</div>
+        <div class="edu-period">2024 – Expected 2026</div>
+      </div>
+    </div>
+    <div class="edu-card fade-up">
+      <div class="edu-icon">🏛️</div>
+      <div>
+        <div class="edu-degree">Bachelor of Engineering – Computer Science</div>
+        <div class="edu-school">Dr. A.P.J. Abdul Kalam University, Indore, India &nbsp;·&nbsp; CGPA: 7.15</div>
+        <div class="edu-period">2019 – 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">// credentials</div>
+  <h2 class="section-title">Certifications</h2>
+  <div class="certs-grid">
+    <div class="cert-card fade-up">
+      <span class="cert-icon">🧪</span>
+      <div class="cert-name">Introduction to Software Testing</div>
+      <div class="cert-org">April 2026 · Cert: 10094910</div>
+    </div>
+    <div class="cert-card fade-up">
+      <span class="cert-icon">⚙️</span>
+      <div class="cert-name">Successful Test Automation</div>
+      <div class="cert-org">Test Automation University</div>
+    </div>
+    <div class="cert-card fade-up">
+      <span class="cert-icon">🏦</span>
+      <div class="cert-name">Technology Engineering Job Simulation</div>
+      <div class="cert-org">Lloyds Bank · Forage</div>
+    </div>
+    <div class="cert-card fade-up">
+      <span class="cert-icon">📊</span>
+      <div class="cert-name">Technology Risk Virtual Job Simulation</div>
+      <div class="cert-org">EY · Forage</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Dhaval Patel</div>
+  <div class="footer-sub">QA ENGINEER · MSC COMPUTER SCIENCE · UNITED KINGDOM</div>
+  <div class="footer-links">
+    <a href="mailto:dhavalkpatel001@gmail.com">Email</a>
+    <a href="https://linkedin.com/in/dhaval-patel-70778a3a9" target="_blank">LinkedIn</a>
+    <a href="https://github.com/dhaval2194" target="_blank">GitHub</a>
+    <a href="tel:+447901368325">+44 79 0136 8325</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
